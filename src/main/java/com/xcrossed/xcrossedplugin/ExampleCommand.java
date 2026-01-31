@@ -1,4 +1,4 @@
-package com.example.exampleplugin;
+package com.xcrossed.xcrossedplugin;
 
 import com.hypixel.hytale.protocol.GameMode;
 import com.hypixel.hytale.server.core.Message;
@@ -19,6 +19,7 @@ public class ExampleCommand extends CommandBase {
         this.setPermissionGroup(GameMode.Adventure); // Allows the command to be used by anyone, not just OP
         this.pluginName = pluginName;
         this.pluginVersion = pluginVersion;
+
     }
 
     @Override

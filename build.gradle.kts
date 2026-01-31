@@ -3,7 +3,7 @@ plugins {
     id("hytale-mod") version "0.+"
 }
 
-group = "com.example"
+group = "com.xcrossed"
 version = "0.1.0"
 val javaVersion = 25
 
@@ -15,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    compileOnly(files("libs/HytaleServer.jar"))
     compileOnly(libs.jetbrains.annotations)
     compileOnly(libs.jspecify)
 }
@@ -23,7 +24,7 @@ hytale {
     // uncomment if you want to add the Assets.zip file to your external libraries;
     // ⚠️ CAUTION, this file is very big and might make your IDE unresponsive for some time!
     //
-    // addAssetsDependency = true
+     addAssetsDependency = true
 
     // uncomment if you want to develop your mod against the pre-release version of the game.
     //
@@ -70,6 +71,12 @@ tasks.withType<Jar> {
                 .map { "${version}-${it}" }
                 .getOrElse(version.toString())
     }
+}
+
+tasks.jar{
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from("src/main/resources")
 }
 
 publishing {
